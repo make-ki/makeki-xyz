@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Website</title>
+    <title>makeki</title>
     <style>
         * {
             margin: 0;
@@ -12,31 +12,25 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #000000;
+            border-bottom: 1px solid #333;
+            z-index: 1000;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
         }
 
         .nav-links {
@@ -46,118 +40,60 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
             padding: 0.5rem 1rem;
-            border-radius: 4px;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            background-color: #34495e;
-            color: #ecf0f1;
-        }
-
+        .nav-links a:hover,
         .nav-links a.active {
-            background-color: #3498db;
+            color: #888888;
         }
 
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .content-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .page {
             display: none;
+            padding-top: 80px;
+            min-height: 100vh;
         }
 
-        .content-section.active {
+        .page.active {
             display: block;
-        }
-
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            main {
-                margin: 1rem auto;
-                padding: 0 1rem;
-            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">My Website</div>
+    <nav>
+        <div class="nav-container">
             <ul class="nav-links">
-                <li><a href="#" onclick="showSection('home')" class="nav-link active">Home</a></li>
-                <li><a href="#" onclick="showSection('blogs')" class="nav-link">Blogs</a></li>
-                <li><a href="#" onclick="showSection('random')" class="nav-link">Random</a></li>
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
+                <li><a href="#" class="nav-link" data-page="random">Random</a></li>
             </ul>
-        </nav>
-    </header>
-
-    <main>
-        <div id="home" class="content-section active">
-            <h1>Welcome Home</h1>
-            <p>Hello there I am makeki, and this is my website.</p>
-            <p>.</p>
         </div>
+    </nav>
 
-        <div id="blogs" class="content-section">
-            <h1>Blog Posts</h1>
-            <p>Self marketing they said.</p>
-        </div>
-
-        <div id="random" class="content-section">
-            <h1>Random Stuff</h1>
-            <p>Things that truly matter in life.</p>
-        </div>
-    </main>
+    <div id="home" class="page active"></div>
+    <div id="blog" class="page"></div>
+    <div id="random" class="page"></div>
 
     <script>
-        function showSection(sectionName) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                navLinks.forEach(nl => nl.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                
+                link.classList.add('active');
+                
+                const targetPage = document.getElementById(link.dataset.page);
+                targetPage.classList.add('active');
             });
-
-            // Remove active class from all nav links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Show selected section
-            document.getElementById(sectionName).classList.add('active');
-
-            // Add active class to clicked nav link
-            event.target.classList.add('active');
-        }
+        });
     </script>
 </body>
 </html>
