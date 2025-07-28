@@ -3,65 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>makeki</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #000000;
-            color: #ffffff;
-            min-height: 100vh;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: #000000;
-            border-bottom: 1px solid #333;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #888888;
-        }
-
-        .page {
-            display: none;
-            padding-top: 80px;
-            min-height: 100vh;
-        }
-
-        .page.active {
-            display: block;
-        }
-    </style>
-</head>
+    </head>
 <body>
     <nav>
         <div class="nav-container">
