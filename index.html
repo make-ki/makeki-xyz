@@ -1,20 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>makeki</title>
-    </head>
-<body>
-    <nav>
+    <meta name="description" content="MakeKi - Developer, Creator, Problem Solver. Building innovative solutions with modern technologies.">
+    <meta name="keywords" content="developer, software engineer, web development, technology, portfolio">
+    <meta name="author" content="MakeKi">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://makeki.xyz/">
+    <meta property="og:title" content="MakeKi - Developer Portfolio">
+    <meta property="og:description" content="Developer, Creator, Problem Solver. Building innovative solutions with modern technologies.">
+    <meta property="og:image" content="https://makeki.xyz/index.gif">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://makeki.xyz/">
+    <meta property="twitter:title" content="MakeKi - Developer Portfolio">
+    <meta property="twitter:description" content="Developer, Creator, Problem Solver. Building innovative solutions with modern technologies.">
+    <meta property="twitter:image" content="https://makeki.xyz/index.gif">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/styles/main.css" as="style">
+    <link rel="preload" href="index.gif" as="image">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    
+    <title>MakeKi - Developer Portfolio</title>
+</head>
+<body class="theme-dark">
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen" aria-hidden="true">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p class="loading-text">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Fallback script to hide loading after timeout -->
+    <script>
+        // Hide loading screen after 5 seconds as fallback
+        setTimeout(() => {
+            const loading = document.getElementById('loading');
+            if (loading && !loading.classList.contains('hidden')) {
+                console.warn('Loading screen timeout - hiding manually');
+                loading.classList.add('hidden');
+            }
+        }, 5000);
+    </script>
+
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav id="navigation" class="navigation" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
-                <li><a href="random.html" class="nav-link">Random</a></li>
+            <div class="nav-brand">
+                <a href="#hero" class="brand-link" aria-label="makeki - Go to top">
+                    <span class="brand-text">makeki</span>
+                </a>
+            </div>
+            
+            <ul class="nav-links" role="menubar">
+                <li role="none">
+                    <a href="#hero" class="nav-link active" role="menuitem" data-section="hero">
+                        <span class="nav-text">Home</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="#about" class="nav-link" role="menuitem" data-section="about">
+                        <span class="nav-text">About</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="#skills" class="nav-link" role="menuitem" data-section="skills">
+                        <span class="nav-text">Skills</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="#experience" class="nav-link" role="menuitem" data-section="experience">
+                        <span class="nav-text">Experience</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="#projects" class="nav-link" role="menuitem" data-section="projects">
+                        <span class="nav-text">Projects</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="#blog" class="nav-link" role="menuitem" data-section="blog">
+                        <span class="nav-text">Blog</span>
+                    </a>
+                </li>
+                <li role="none">
+                    <a href="#contact" class="nav-link" role="menuitem" data-section="contact">
+                        <span class="nav-text">Contact</span>
+                    </a>
+                </li>
             </ul>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="section hero-section" aria-label="Introduction">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="greeting">Hey👋, I'm</span>
+                        <span class="name">makeki</span>
+                    </h1>
+                    <div class="hero-subtitle">
+                        <span class="typing-text" aria-label="Developer roles">
+                            <span class="typed-text"></span>
+                            <span class="cursor" aria-hidden="true">|</span>
+                        </span>
+                    </div>
+                    <p class="hero-description">
+                        I've been stumbling, letting each misstep sharpen my perspective. Letting my work grow out of lessons learned, not from pretending perfection. Finding my place on earth.
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary" role="button">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="btn btn-secondary" role="button">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section fade-in-up" aria-label="About me">
+            <div class="container">
+                <header class="section-header fade-in">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Get to know me better</p>
+                </header>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="about-intro">
+                            <p class="lead">
+                                I'm a passionate developer who loves creating digital solutions 
+                                that make a difference. With expertise in modern web technologies, 
+                                I focus on building scalable, user-friendly applications.
+                            </p>
+                        </div>
+                        
+                        <div class="about-details">
+                            <p>
+                                My journey in software development started with curiosity and 
+                                has evolved into a career focused on innovation and problem-solving. 
+                                I believe in writing clean, maintainable code and creating 
+                                experiences that users love.
+                            </p>
+                            
+                            <p>
+                                When I'm not coding, you can find me exploring new technologies, 
+                                contributing to open source projects, or sharing knowledge 
+                                through blog posts and community involvement.
+                            </p>
+                        </div>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="50">0</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="3">0</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="100">0</span>
+                                <span class="stat-label">Happy Clients</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills-section fade-in-left" aria-label="My skills">
+            <div class="container">
+                <header class="section-header fade-in">
+                    <h2 class="section-title">Skills & Technologies</h2>
+                    <p class="section-subtitle">Tools and technologies I work with</p>
+                </header>
+                
+                <div class="skills-content stagger-children">
+                    <div class="skills-categories">
+                        <!-- Skills will be dynamically loaded -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section experience-section fade-in-up" aria-label="Work experience">
+            <div class="container">
+                <header class="section-header fade-in">
+                    <h2 class="section-title">Experience</h2>
+                    <p class="section-subtitle">Where I've worked and what I've learned</p>
+                </header>
+                
+                <div class="experience-content stagger-children">
+                    <div class="experience-timeline">
+                        <!-- Experience items will be dynamically loaded -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section fade-in-right" aria-label="My projects">
+            <div class="container">
+                <header class="section-header fade-in">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Some of the work I'm most proud of</p>
+                </header>
+                
+                <div class="projects-filters fade-in-scale">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                    <button class="filter-btn" data-filter="ai">AI/ML</button>
+                    <button class="filter-btn" data-filter="tools">Tools</button>
+                </div>
+                
+                <div class="projects-grid stagger-children">
+                    <!-- Projects will be dynamically loaded -->
+                </div>
+                
+                <div class="projects-actions">
+                    <a href="https://github.com/make-ki" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        View More on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section blog-section fade-in-left" aria-label="Blog posts">
+            <div class="container">
+                <header class="section-header fade-in">
+                    <h2 class="section-title">Latest Posts</h2>
+                    <p class="section-subtitle">Thoughts, tutorials, and insights</p>
+                </header>
+                
+                <div class="blog-content stagger-children">
+                    <div class="blog-posts">
+                        <!-- Blog posts will be dynamically loaded -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section fade-in-scale" aria-label="Contact information">
+            <div class="container">
+                <header class="section-header fade-in">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Let's build something amazing together</p>
+                </header>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <p class="contact-text">
+                            I'm always interested in new opportunities and interesting projects. 
+                            Whether you have a question or just want to say hi, feel free to reach out!
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <a href="mailto:contact@makeki.xyz" class="contact-method">
+                                <span class="contact-icon">✉️</span>
+                                <span class="contact-text">contact@makeki.xyz</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/make-ki" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <span class="social-icon">GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/makeki" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <span class="social-icon">LinkedIn</span>
+                        </a>
+                        <a href="https://twitter.com/makeki" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <span class="social-icon">Twitter</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    Made with ❤️ by MakeKi
+                </p>
+                <p class="footer-update">
+                    Last updated: <time id="last-updated" datetime="">Loading...</time>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="assets/scripts/main.js?v=2"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator && location.protocol === 'https:') {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => console.log('SW registered:', registration))
+                .catch(error => console.log('SW registration failed:', error));
+        }
+    </script>
 </body>
 </html>

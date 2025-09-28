@@ -1,0 +1,124 @@
+{
+  "name": "makeki-xyz",
+  "version": "2.0.0",
+  "description": "Modern, modular portfolio website for MakeKi",
+  "main": "assets/scripts/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint assets/scripts/**/*.js",
+    "lint:fix": "eslint assets/scripts/**/*.js --fix",
+    "format": "prettier --write assets/scripts/**/*.js assets/styles/**/*.css *.html",
+    "build": "npm run lint && npm run test",
+    "serve": "python -m http.server 8000",
+    "validate": "html-validate *.html",
+    "lighthouse": "lighthouse http://localhost:8000 --output html --output-path ./lighthouse-report.html"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "developer",
+    "modern",
+    "modular",
+    "javascript",
+    "es6"
+  ],
+  "author": "MakeKi",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@jest/globals": "^29.7.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.57.0",
+    "html-validate": "^8.7.4",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lighthouse": "^11.4.0",
+    "prettier": "^3.1.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setup.js"
+    ],
+    "collectCoverageFrom": [
+      "assets/scripts/**/*.js",
+      "!assets/scripts/main.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.js"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/assets/scripts/$1"
+    },
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-unused-vars": "warn",
+      "no-console": "off",
+      "prefer-const": "error",
+      "no-var": "error",
+      "arrow-spacing": "error",
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "none",
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
