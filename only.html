@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      a{
+        background-color:#888;
+        text-decoration: none;
+        padding: 1px 2px 1px 3px;
+        color: white;
+      }
+
+      a:hover{
+        background-color:#596275;
+      }
+
+      .face{
+        width: 150px;
+        margin: 40px auto;
+        display: block;
+        border-radius: 50%;
+      }
+
+      #main{
+        font-family: monospace;
+        word-wrap: break-word;
+        color: #444;
+        padding: 0;
+        margin-bottom: 100px;
+        line-height: 1.5em;
+        margin: 0 auto 60px auto;
+        width: 200vw;
+        max-width: 550px;
+        background-color:white;
+      }
+
+      #bg{
+        position:fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: blur(1px);
+        z-index: -1;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        color: black;
+      }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <title>makeki home</title>
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+    <div id="main">
+    <img class='face' src='media/profile_pic.jpg' />
+    Hi! I'm,
+    <a style='color:#888;background-color:#888'>Anupam</a> aka makeki<br>
+    an internet user.<br>
+    hmu on my mail (best platform)<a href="mailto:makeki456@proton.me">📧</a>.<br>
+    or @make_ki on discord.<br><br>
+    <br>
+    "Thinketh not is my eleventh commandment, sleep when you can is my twelfth" -Stubb, Moby Dick
+    <br><br>
+
+    <h2>about me</h2> Born in Indirapuram, raised and educated in
+    Odisha for 9 years, then Gujarat for another 9, now studying in Kerala (i'm pan indian). I remember 
+    my first lucid memory is booting a computer my dad had for my elder cousin.
+    Even though I had a computer it didn't have internet. So most of my time was spent playing Road Rash, pitfall,
+    Zuma; games. No one in my family is a programmer or even remotely in tech, so I was never introduced to that world irl.
+    It was when I got internet that my world began developing. But even there, most of my time was
+    spent on platforms like kogama playing online games making friends who lived far away.
+    Then one day I figured that you could actually make your own games on kogama!!. I didn't end up making
+    a front page game, but I remember that excitement of building something I imagine. I made a few buildings, I 
+    had the idea planned "gta but kogama" (i didn't have gta and wanted to play it). And I tried and I couldn't do it alone.
+    I don't remember the outcome, I probably left it to play fifa (new thing i discovered). 
+    I am like little cheerful kid in sandals that thinks of our world as many chocolate fountains. I run around dipping my finger into them.
+    If I got access to them, and didn't shy away.
+    But somehow, the fountains I dipped my fingers all lead to me pursuing computer science.
+    I'd say I like vim, zsh, nixos, history, security, consciousness, religion, freedom, my spotify 
+    favourites, no bullshitism, mangas, anime, talking to people. If weather is nice I'd say yes to go anywhere with you
+    <a href='media/waterfall.jpg'>waterfall</a>,
+    <a href='media/morning.jpeg'>morning jogs</a>,
+    <a href='media/hiking.jpg'>hiking</a>.
+    
+    I think I have consumed enough
+    entertainment content to entertain a village in 1900s, and I'm actively cutting down it, but movies and literature 
+    get a pass.
+    Sometimes the code makes it to my <a href='https://github.com/make-ki'>github</a> profile. <br><br> 
+    <!-- RbVaQdhcBcBb1IVcRcBZcIJdBdBYMbURlIEW1Ho3nHgGpypyz2lGh3lil2sG1CpC3XgWgEPS= twopiece > onepiece -->
+     <h2 id='projects'>incomplete list of incomplete projects/experiments/bits</h2>
+    - wfreq: counts the occurrence of a word in a file. <br>
+    - godu: disk usage(du UNIX) but in go, only --bytes is implemented.<br>
+    - cyourstory: a software that helps you make choice style stories on a webpage with json input<br>
+    - this website?<br>
+    - dih: a discord bot that kept taking screenshots of a discord channel, any message starting with dih it sends it to gemini api and shows the result.<br>
+    - SuKMaDhe bot: another discord bot that fetched CTFtime information and showed it in our ctf discord server.<br>
+    - htmlLP: html link parser, it goes to a website and gets all the links there are in its html.<br>
+    - EvoRoute: just implemented bellman ford and dijkstra as used in intra AS routing protocols.<br>
+    - wcheck: checks if a list of websites are up or down. Written in go, with concurrent worker pattern. (could end up being a dos generator)<br>
+    - urlShortener: if s.makeki.xyz/gh redirects then it works ig.<br>
+    - QRNG: actually prng, only qrng if you have fast access to a quantum computer<br>
+    - all the lab assignments i genuinely did, most of the people I know around it have the philosophy of generate code with agents and we'll actually learn<br>
+    later but idk it just feels weird to do it, im not against that philosophy and that probably is the way the tech future is going to be.<br>
+    <br><br>
+
+    <b>TLDR;</b> Kid in second year, likes playing around with things, is happy living.
+    </div>
+    <!-- Theres many subdomains of this website. hehe-->
+    <!-- sin waves plus some fragment shading-->
+     <script>
+  let c = document.getElementById('bg'), g = c.getContext('webgl');
+  let f = `precision mediump float;
+    uniform float t; uniform vec2 r;
+    void main(){
+      vec2 p=gl_FragCoord.xy/r;
+      float y=0.5+sin(p.x*10.+t*2.)*.1+sin(p.x*25.+t*3.3)*.05+sin(p.x*5.+t)*.15;
+      float m=step(0.005,abs(p.y-y));
+      gl_FragColor=vec4(vec3(m),1);
+    }`;
+  let v=g.createShader(g.VERTEX_SHADER);g.shaderSource(v,`attribute vec2 a;void main(){gl_Position=vec4(a,0,1);}`);g.compileShader(v);
+  let s=g.createShader(g.FRAGMENT_SHADER);g.shaderSource(s,f);g.compileShader(s);
+  let pr=g.createProgram();g.attachShader(pr,v);g.attachShader(pr,s);g.linkProgram(pr);g.useProgram(pr);
+  g.bindBuffer(g.ARRAY_BUFFER,g.createBuffer());
+  g.bufferData(g.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),g.STATIC_DRAW);
+  let a=g.getAttribLocation(pr,'a');g.enableVertexAttribArray(a);g.vertexAttribPointer(a,2,g.FLOAT,0,0,0);
+  let ut=g.getUniformLocation(pr,'t'),ur=g.getUniformLocation(pr,'r');
+  onresize=()=>{c.width=innerWidth;c.height=innerHeight;g.viewport(0,0,c.width,c.height)};onresize();
+  (function d(n){g.uniform1f(ut,n*.001);g.uniform2f(ur,c.width,c.height);g.drawArrays(g.TRIANGLES,0,6);requestAnimationFrame(d)})(0);
+</script>
+  </body>
+</html>
