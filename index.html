@@ -46,6 +46,18 @@
       h1,h2,h3,h4,h5,h6 {
         color: black;
       }
+
+      #audiobtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-family: monospace;
+        color: #444;
+        text-decoration: underline;
+        cursor: pointer;
+        user-select: none;
+        z-index: 1;
+      }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
@@ -53,6 +65,9 @@
   </head>
   <body>
     <canvas id="bg"></canvas>
+    <audio loop id="bgm">
+      <source src="media/Adagio%20for%20Strings.mp3" type="audio/mpeg">
+    </audio>
     <div id="main">
     <img class='face' src='media/profile_pic.jpg' />
     Hi! I'm,
@@ -110,6 +125,7 @@
 
     <b>TLDR;</b> Kid in second year, likes playing around with things, is happy living.
     </div>
+    <span id='audiobtn' onclick='toggleMusic()'>play</span>
     <!-- Theres many subdomains of this website. hehe-->
     <!-- sin waves plus some fragment shading-->
      <script>
@@ -131,6 +147,11 @@
   let ut=g.getUniformLocation(pr,'t'),ur=g.getUniformLocation(pr,'r');
   onresize=()=>{c.width=innerWidth;c.height=innerHeight;g.viewport(0,0,c.width,c.height)};onresize();
   (function d(n){g.uniform1f(ut,n*.001);g.uniform2f(ur,c.width,c.height);g.drawArrays(g.TRIANGLES,0,6);requestAnimationFrame(d)})(0);
+
+  function toggleMusic(){
+    let a=document.getElementById('bgm'),b=document.getElementById('audiobtn');
+    if(a.paused){a.play();b.textContent='pause'}else{a.pause();b.textContent='play'}
+  }
 </script>
   </body>
 </html>
